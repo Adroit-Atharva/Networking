@@ -1,0 +1,349 @@
+
+
+sys3
+
+system - recursive notion
+
+computational capability and io
+
+base case
+register
+f(x) = x
+
+f(x) = c
+
+f(x) = c
+f(y) = c'
+
+cfl sentences 
+csl sentences 
+psl sentences 
+
+Linux
+c code
+socket
+
+message - just a sequence of bits
+bit - a symbol from any arbitrary 2 element set
+
+wifi - radio waves
+hdmi - electrical waves
+projector - optical waves
+usb - electrical waves
+
+abstract
+
+
+
+cfl sentences
+
+----------
+Linux
+process - system
+
+our system - a collection of at least 3 Linux processes
+
+1 process - ear
+1 process - mouth
+1 process - brain
+
+
+ear, mouth - urecv, usend
+
+fork-exec ritual
+
+create an instance of our system
+
+
+create two instances of our system, say, q1, q2
+
+socket
+
+port - 1234
+
+q1 - port1
+q2 - port2
+----------
+
+q1 - reverse the string
+
+----------
+
+
+swb
+
+terminal 1 q1
+$ ./swb 1234
+
+terminal 2 q2
+$ ./swb 1235
+------------
+
+
+our system - a collection of at least 3 Linux processes
+
+2 process - 2 ear
+1 process - mouth
+1 process - brain
+-------------
+
+terminal 3 q3
+$ ./swb2 1236 1237
+
+-------------
+
+end-user
+b-m
+b-e
+files
+
+--------------
+22-07-2025
+
+model of our systems
+
+comp
+
+tm
+ear - as far as comm with other systems is concerned it 
+      shall be able to receive a message of certain size
+
+mouth - as far as comm with other systems is concerned it 
+      shall be able to send a message of certain size
+
+brain - memory, cpu
+        primary memory, secondary memory
+	b-e file size
+	b-m file size
+
+userio - communication between userio and brain 
+         shall be using a file
+	 b-u file size
+
+infinitely
+
+coding rituals
+how to receive the parameters?
+params config
+
+swb
+swb2
+
+youtube - 
+
+kill 
+$ ./swb conf \\1234
+
+---------
+
+id of the system
+
+msg 
+
+id is any arbitrary string of finite length
+such that no two systems shall have the same id
+
+each system shall have its own id
+and a list of tuples
+[<id, [<port,msgsize>]>]
+
+Organized Mind - Levitin
+
+-------
+
+25/07/25
+
+id
+
+if two systems have different capacities then 
+sender and receiver
+
+4 parts of our system instance with their specifications
+
+-----------
+
+happy bday problem
+video of say 100mb
+video of say 50mb
+video of say 200mb
+
+3 instances
+we shall assume that all systems have sufficient secondary storage
+
+system message vs user message
+
+sm and um
+sm = min (s,r)
+algo
+
+um = --------------------------------------------------
+
+sm1 = ----\----\----\--------------------------------------
+sm2 = -----\-----\-----\-----------------------------------
+
+chance - >0 <100
+theory of chance - probability
+
+sender
+ds - [[]] 
+
+y1 - um1 at t1 
+
+y2 - um1 at t2
+
+t2 - t1 is finite
+----------
+
+y1 shall wait for some finite time
+
+alarm 
+---------
+
+29-07-2025
+
+file io
+ui ---> b  f1
+b  ---> ui f2
+
+f1: b0
+    0123456789
+
+b0 = 0 -> ui is writing
+b0 = 1 -> ui has finished writing
+b0 = 2 -> br has finished reading
+
+fread is a blocking system call
+
+----------------
+
+um and sm
+
+user wants um to be sent from y1 to y2
+then
+the system instance at y1 should send um to y2, in finite 
+amount of time
+
+um is divided into sm sized chunks 
+
+some sm may not reach y2
+algorithm
+
+y1 all sm are sent 
+
+y2/y1 sm0 sm1 sm2 ... smk
+      0   1   2       k
+y2/y2 sm0 sm0 sm0 sm1 sm0 sm2 sm1 ... smk
+      sm0 sm1 sm2 sm3 sm4 ....smk'
+      0   0   0   1   0
+      um'/um
+y1 and y2 are independant systems
+
+v y1,y2 (~(p(y1) -> p(y2)) ^ ~(y1=y2)) 
+
+Nature
+
+y1, y2
+pre-condition
+post-condition
+
+terminate
+invariant
+
+y1 um' um
+y2 um' um
+
+--------------------
+
+simultaneous
+space 
+2 objects overlap in some space
+
+y1 y2 y3
+
+---------------------
+
+hundreds, thousands instances
+
+n systems
+y1, y2, y3, .... yn
+
+c1,c2,c3 ...cn
+
+U ci = 
+if any ci = aUb such that a^b={} and a!={} and b!={}
+then it is possible to remove b
+
+---------------
+utoob
+
+system y1 is online/offline
+
+y is started at t1
+
+y' is started at t2
+t2-t1 is finite
+after t3>t2 all systems must be able to communicate 
+with any other system and t3-t2 is finite
+
+send a message to all systems in the config
+
+sj is a subset of su
+
+tj >= t1
+
+yj with cj containing sj starts at tj
+for each system instance y in sj
+  yj sends sj to y [which algo???]
+for each msg mk received from yk
+  yj will do sj' <- sj U sk
+  for each system instance y in sj'-sj
+     yj will send sj' to y != yk, if needed [justfy ???]
+     yj will send sj to yk, if needed
+if sj' = sj then terminate the algo else continue
+
+given that t2 > tj for all j is the algo correct?
+-------------
+
+happy bday
+um-id
+s - um0-id sm0 sm1 sm2 ... smn
+after recving ack for um0-id from r s shall send all sm[i]
+and wait for msg from r w.r.t. um0-id
+if the alarm goes off for um0-id
+  then s shall send an atomic msg w.r.t. um0-id to r
+    and wait
+    and repeat until 
+s receives a msg w.r.t um0-id from r [???]
+
+s shall find out which chunks r has not recved yet
+
+=====
+r - recvd chunks and missed chunks
+
+r shall receive um0-id and shall set up a suitable ds
+r must send a set of missing sm's w.r.t. um0-id using 
+the baby-step1 algo recursively [???]
+this msg um-id' is derived from um-id
+um-id' is smaller than um-id ???
+what is the size of um-id       = size(sm) x n
+what will be the size of um-id' = size(num) x n
+
+- - - - - - - um id from s id
+0 1 2       n
+
+baby-step0 k resends are needed
+so for n chunks nk resends may be needed
+
+baby-step1 at the r the chance of a given chunk is not
+  received is (1-p = q)
+so pk resends are not necessary but will be carried in
+ the baby-step0
+ so the rough cost saving shall be around (npk - x)
+-----------
+
+
+
+
+
+
+
