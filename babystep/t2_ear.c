@@ -46,7 +46,7 @@ int main() {
 
         if (n > 0) {
             buffer[n] = '\0';  // null-terminate
-            printf("Received: %s\n", buffer);
+            printf("Received: 123 %s\n", buffer);
 
             // Write to file with newline
             fprintf(fp, "%s\n", buffer);

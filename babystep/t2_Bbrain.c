@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) //do not use this command line argument yet, it
     {
         if(e_pid[i] == 0)
         {
-	    printf("%d\t %d\n",getpid(), getppid());
+	   // printf("%d\t %d\n",getpid(), getppid());
             e_re = execv(e_otherprogram, (char **) e_args);
             if(e_re == -1)
             {
